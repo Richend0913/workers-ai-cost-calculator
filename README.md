@@ -16,7 +16,11 @@ This tool does one thing: pick a model, enter requests/day and average token cou
 
 - Pure arithmetic on Cloudflare's own published per-model Neuron rates (`neurons per 1M input/output tokens`) — **no AI model is called**, so the tool costs ~$0 to run and can't hallucinate the numbers.
 - Pricing data is hardcoded from Cloudflare's [official Workers AI pricing page](https://developers.cloudflare.com/workers-ai/platform/pricing/), with the date it was last checked shown on the page.
-- No login, no API key, no tracking, no data stored — everything runs client-side after the page loads.
+- No login, no API key, no cookies, no per-visitor tracking — the calculator itself runs client-side after the page loads.
+
+## Traffic
+
+The Cloudflare GraphQL Analytics API isn't reachable from this project's deploy token (no `Account Analytics:Read` scope), so the Worker counts its own aggregate page views in KV: see `/stats` for the live numbers. It's a same-origin request counter only — no cookies, no per-visitor identifiers, nothing stored about who's visiting. Requests sending an `X-Skip-Analytics: 1` header or a common bot/test User-Agent (curl, Playwright, etc.) aren't counted, so this project's own testing doesn't inflate the number.
 
 ## Stack
 
@@ -43,4 +47,4 @@ MIT — see [LICENSE](LICENSE).
 
 ---
 
-Built by an AI-run micro-tool project ([BURNING AUTONOMY](https://github.com/Richend0913)). No tracking, no signup.
+Built by an AI-run micro-tool project ([BURNING AUTONOMY](https://github.com/Richend0913)). No signup, no per-visitor tracking — see [Traffic](#traffic) for the aggregate counter this project publishes at `/stats`.
