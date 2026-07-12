@@ -1,3 +1,7 @@
 name = "workers-ai-cost-calculator"
 main = "worker.js"
 compatibility_date = "2026-06-01"
+
+[[kv_namespaces]]
+binding = "ANALYTICS"
+id = "9c2c0ac044e2465a8e5c23a23f91a1b6"
