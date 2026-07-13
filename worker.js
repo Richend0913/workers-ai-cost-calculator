@@ -14,6 +14,19 @@ const SITE_URL = "https://workers-ai-cost-calculator.burningbros.workers.dev";
 const INDEXNOW_KEY = "71cdfa32ca43f22511c1ceb530e92f11";
 const REPO_URL = "https://github.com/Richend0913/workers-ai-cost-calculator";
 
+// Sibling free tools from the same project (BURNING AUTONOMY Track C). Cross-linking them is a
+// zero-cost discovery aid: no new platform/account, just pointing visitors of one tool at the
+// others. Filtered so each site never lists itself.
+const RELATED_TOOLS = [
+  { url: "https://workers-ai-cost-calculator.burningbros.workers.dev/", label: "Workers AI Free Tier Neuron Calculator" },
+  { url: "https://cf-error-explainer.burningbros.workers.dev/", label: "Cloudflare Error Code AI Explainer" },
+  { url: "https://cf-storage-advisor.burningbros.workers.dev/", label: "Cloudflare Storage Advisor (KV vs D1 vs R2 vs Durable Objects)" },
+  { url: "https://cf-async-advisor.burningbros.workers.dev/", label: "Cloudflare Async Processing Advisor (Queues vs Workflows vs Durable Objects vs Cron)" },
+].filter((t) => t.url !== SITE_URL + "/");
+const RELATED_TOOLS_HTML = RELATED_TOOLS.map(
+  (t) => `<a href="${t.url}" target="_blank" rel="noopener">${t.label}</a>`
+).join(" &middot; ");
+
 // [id, label, neurons per 1M input tokens, neurons per 1M output tokens]
 const MODELS = [
   ["@cf/meta/llama-3.2-1b-instruct", "Llama 3.2 1B Instruct", 2457, 18252],
@@ -171,6 +184,7 @@ per-model rates — it does not call any AI model, so it costs us nothing to run
 Pricing data checked ${DATA_CHECKED} from <a href="${SOURCE_URL}" target="_blank" rel="noopener">Cloudflare's official pricing page</a> — always confirm current rates there before relying on this for a production budget.<br>
 Built as a small, free utility by an AI-run micro-tool project (BURNING AUTONOMY). No tracking, no signup, no data stored.
 Source code: <a href="${REPO_URL}" target="_blank" rel="noopener">open on GitHub</a>.
+<br>More free Cloudflare tools from the same project: ${RELATED_TOOLS_HTML}
 </div>
 </div>
 <script>

@@ -45,6 +45,14 @@ PRs that update pricing data (with a link to the source) or fix bugs are welcome
 
 MIT — see [LICENSE](LICENSE).
 
+## Related tools
+
+Other free Cloudflare tools from the same project:
+
+- [Cloudflare Error Code AI Explainer](https://cf-error-explainer.burningbros.workers.dev/) ([source](https://github.com/Richend0913/cf-error-explainer))
+- [Cloudflare Storage Advisor (KV vs D1 vs R2 vs Durable Objects)](https://cf-storage-advisor.burningbros.workers.dev/) ([source](https://github.com/Richend0913/cf-storage-advisor))
+- [Cloudflare Async Processing Advisor (Queues vs Workflows vs Durable Objects vs Cron)](https://cf-async-advisor.burningbros.workers.dev/) ([source](https://github.com/Richend0913/cf-async-advisor))
+
 ---
 
 Built by an AI-run micro-tool project ([BURNING AUTONOMY](https://github.com/Richend0913)). No signup, no per-visitor tracking — see [Traffic](#traffic) for the aggregate counter this project publishes at `/stats`.
