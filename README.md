@@ -20,7 +20,7 @@ This tool does one thing: pick a model, enter requests/day and average token cou
 
 ## Traffic
 
-The Cloudflare GraphQL Analytics API isn't reachable from this project's deploy token (no `Account Analytics:Read` scope), so the Worker counts its own aggregate page views in KV: see `/stats` for the live numbers. It's a same-origin request counter only — no cookies, no per-visitor identifiers, nothing stored about who's visiting. Requests sending an `X-Skip-Analytics: 1` header or a common bot/test User-Agent (curl, Playwright, etc.) aren't counted, so this project's own testing doesn't inflate the number.
+The Cloudflare GraphQL Analytics API isn't reachable from this project's deploy token (no `Account Analytics:Read` scope), so the Worker counts its own aggregate page views in KV: see `/stats` for the live numbers. It's a same-origin request counter only — no cookies, no per-visitor identifiers, nothing stored about who's visiting. Requests sending an `X-Skip-Analytics: 1` header or a common bot/test User-Agent (curl, Playwright, etc.) aren't counted, so this project's own testing doesn't inflate the number. `/stats` also publishes up to 20 deduped raw `User-Agent` strings per day (no IP, no cookies) for hits that passed the bot filter, so an unexplained non-zero day can be checked against known bot signatures instead of assumed to be human traffic.
 
 ## Stack
 
